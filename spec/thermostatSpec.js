@@ -30,15 +30,21 @@ describe("Thermostat", function() {
       expect(thermostat.temperature).toEqual(10);
     });
 
+    it("has a maximum temperature of 32degrees", function() {
+      thermostat.increaseTemperature(14);
+      expect(thermostat.temperature).toEqual(32);
+    });
+
   });
 
   describe("in power saving mode", function() {
-    it("has a maximum temperature is 25 degrees", function() {
+    it("has a maximum temperature of 25 degrees", function() {
       thermostat.powerSavingMode = true;
       thermostat.increaseTemperature(16);
       expect(thermostat.temperature).toEqual(25);
     });
   });
+
 });
 
 // Thermostat starts at 20 degrees
