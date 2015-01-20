@@ -20,16 +20,24 @@ describe("Thermostat", function() {
       expect(thermostat.temperature).toEqual(21);
     });
   
-
     it("can decrease", function() {
       thermostat.decreaseTemperature(1);
       expect(thermostat.temperature).toEqual(19);
     });
 
-    it("has a minimum temperature of 10 degrees", function () {
-      expect(thermostat.decreaseTemperature(11)).toThrow(new Error("The minimum temperature is 10degrees"));
+    it("has a minimum temperature of 10 degrees", function() {
+      thermostat.decreaseTemperature(11);
+      expect(thermostat.temperature).toEqual(10);
     });
 
+  });
+
+  describe("in power saving mode", function() {
+    it("has a maximum temperature is 25 degrees", function() {
+      thermostat.powerSavingMode = true;
+      thermostat.increaseTemperature(16);
+      expect(thermostat.temperature).toEqual(25);
+    });
   });
 });
 
