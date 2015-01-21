@@ -36,14 +36,15 @@ Thermostat.prototype.decreaseTemperature = function(changeTempBy) {
   return this.temperature;
 };
 
-Thermostat.prototype.powerSavingModeOn = function () {
-  this.powerSavingMode;
-  this.temperature = Math.min(this.temperature, this.maxOnPowerSave);
+Thermostat.prototype.powerSavingModeSwitch = function () {
+  if (this.powerSavingMode){
+    this.powerSavingMode = false;
+    this.temperature = Math.min(this.temperature, this.maxOnPowerSave);
+  } else {
+    this.powerSavingMode = true;
+  }
 };
 
-Thermostat.prototype.powerSavingModeOff = function () {
-  this.powerSavingMode = false;
-};
 
 Thermostat.prototype.tempReset = function() {
   this.temperature = this.resetTo;
