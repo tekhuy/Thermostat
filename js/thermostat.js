@@ -1,25 +1,25 @@
 var Thermostat = function() {
-  this.temperature = 20;
-  this.minimumTemperature = 10;
-  this.maximumTemperature = 32;
-  this.maxOnPS = 25;
   this.powerSavingMode = true;
+  this.temperature = 20;
+  this.minTemperature = 10;
   this.resetTo = 20
+  this.maxTemperature = 32;
+  this.maxOnPowerSave = 25;
 };
 
 Thermostat.prototype.increaseTemperature = function(changeTempBy) {
   var newTemp = this.temperature += changeTempBy;
   if (this.powerSavingMode === true){
-    this.temperature = Math.min(newTemp, this.maxOnPS)
+    this.temperature = Math.min(newTemp, this.maxOnPowerSave)
   } else {
-    this.temperature = Math.min(newTemp, this.maximumTemperature)
+    this.temperature = Math.min(newTemp, this.maxTemperature)
   };
   return this.temperature;
 };
 
 Thermostat.prototype.decreaseTemperature = function(changeTempBy) {
   var newTemp = this.temperature -= changeTempBy;
-  this.temperature = Math.max(newTemp, this.minimumTemperature)
+  this.temperature = Math.max(newTemp, this.minTemperature)
   return this.temperature;
 };
 
@@ -28,7 +28,7 @@ Thermostat.prototype.powerSavingModeSwitch = function() {
     this.powerSavingMode = false;
   } else {
     this.powerSavingMode = true;
-    this.temperature = Math.max(this.temperature, this.maxOnPS)
+    this.temperature = Math.min(this.temperature, this.maxOnPowerSave)
   };
 };
 

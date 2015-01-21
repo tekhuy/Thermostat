@@ -53,7 +53,19 @@ describe("Thermostat", function() {
       thermostat.increaseTemperature(16);
       expect(thermostat.temperature).toEqual(25);
     });
+
+    it("will decrease the temp to 25 degrees if higher", function() {
+      thermostat.powerSavingModeSwitch();
+      thermostat.temperature = 30;
+      thermostat.powerSavingModeSwitch();
+      expect(thermostat.temperature).toEqual(25);
+    });
   });
+
+  // describe("changing defaults", function() {
+  //     thermostat.changeMinimumTemp(15);
+  //     expect(thermostat.minimumTemperature).toEqual(15);
+  // });
 
 });
 
