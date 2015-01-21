@@ -5,14 +5,14 @@ var Thermostat = function() {
 };
 
 Thermostat.prototype.increaseTemperature = function(changeTempBy) {
-  var hotterTemp = this.temperature += changeTempBy;
-  if (this.powerSavingMode === true && hotterTemp > 25){
+  var newTemp = this.temperature += changeTempBy;
+  if (this.powerSavingMode === true && newTemp > 25){
     this.temperature = 25;
     console.log("The max. temp in power saving mode is 25 degrees")
-  } else if (hotterTemp > 32){
+  } else if (newTemp > 32){
   	this.temperature = 32
   } else {
-    this.temperature = hotterTemp
+    this.temperature = newTemp
   };
   return this.temperature;
 };

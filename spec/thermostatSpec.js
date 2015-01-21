@@ -12,6 +12,10 @@ describe("Thermostat", function() {
       expect(thermostat.temperature).toEqual(20);
     });
 
+    it("the power saving mode is on", function() {
+      expect(thermostat.powerSavingMode = true;
+    });
+
   });
 
   describe("changing temperature", function() {
