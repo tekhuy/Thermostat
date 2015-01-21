@@ -41,9 +41,9 @@ describe("Thermostat", function() {
     });
 
     it("can be reset to 20 by pressing reset button", function() {
-      thermostat.increaseTemperature(5)
-      thermostat.reset
-      expect(thermostat.temperature).toEqual(20)
+      thermostat.increaseTemperature(5);
+      thermostat.tempReset();
+      expect(thermostat.temperature).toEqual(20);
     });
 
   });
