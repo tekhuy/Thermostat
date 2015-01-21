@@ -34,4 +34,14 @@ $(document).ready(function() {
     updateTemperature();
   });
 
+  $('.power-saving').on('click', function () {
+    thermostat.powerSavingModeSwitch();
+    if (thermostat.powerSavingMode) {
+      updateTemperature(); 
+      $('.power-saving').text('Power Saving On');
+    } else {
+      $('.power-saving').text('Power Saving Off');
+    };
+  });
+
 });
