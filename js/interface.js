@@ -1,3 +1,4 @@
+console.log("hello")
 var thermostat = new Thermostat();
 
 var updateTemperature = function() {
@@ -9,6 +10,16 @@ $(document).ready(function() {
 
   $('.increase-temp').on('click', function() {
     thermostat.increaseTemperature();
+    updateTemperature();
+  });
+
+  $('.decrease-temp').on('click', function() {
+    thermostat.decreaseTemperature();
+    updateTemperature();
+  });
+
+  $('.reset').on('click', function() {
+    thermostat.tempReset();
     updateTemperature();
   });
 
