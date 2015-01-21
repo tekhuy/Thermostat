@@ -53,6 +53,32 @@ describe("Thermostat", function() {
       thermostat.increaseTemperature(16);
       expect(thermostat.temperature).toEqual(25);
     });
+    it("will decrease the temp to 25 degrees if higher", function() {
+      thermostat.powerSavingModeSwitch();
+      thermostat.temperature = 30;
+      thermostat.powerSavingModeSwitch();
+      expect(thermostat.temperature).toEqual(25);
+    });
+  });
+
+  describe("The Thermostat color display", function() {
+
+    it("should be green if less than 18 degrees", function() {
+      thermostat.decreaseTemperature(3);
+      expect(thermostat.temperature).toEqual(17);
+      expect(thermostat.colorDisplay()).toBe('green');
+    });
+
+    it("should be yellow if less than 25 degrees", function() {
+      expect(thermostat.colorDisplay()).toBe('yellow');
+    });
+
+    it("should be red if 25 degrees or higher", function() {
+      thermostat.increaseTemperature(5);
+      expect(thermostat.temperature).toEqual(25);
+      expect(thermostat.colorDisplay()).toBe('red');
+    });
+
   });
 
 });

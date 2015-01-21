@@ -1,31 +1,25 @@
 var Thermostat = function() {
-  this.temperature = 20;
-  this.minimumTemperature = 10;
   this.powerSavingMode = true;
+  this.temperature = 20;
+  this.minTemperature = 10;
+  this.maxTemperature = 32;
+  this.resetTo = 20;
+  this.maxOnPowerSave = 25;
+  this.greenTemperature = 18;
+  this.redTemperature = 24;
 };
 
 Thermostat.prototype.increaseTemperature = function(changeTempBy) {
   var newTemp = this.temperature += changeTempBy;
-  if (this.powerSavingMode === true && newTemp > 25){
-    this.temperature = 25;
-    console.log("The max. temp in power saving mode is 25 degrees")
-  } else if (newTemp > 32){
-  	this.temperature = 32
-  } else {
-    this.temperature = newTemp
+  if (this.powerSavingMode) {
+    this.temperature = Math.min(newTemp, this.maxOnPowerSave)
+  } else {this.temperature = Math.min(newTemp, this.maxTemperature);
   };
-  return this.temperature;
 };
 
 Thermostat.prototype.decreaseTemperature = function(changeTempBy) {
   var newTemp = this.temperature -= changeTempBy;
-	if (newTemp < 10){
-		this.temperature = 10;
-		console.log("The minimum temperature is 10degrees");
-	} else {
-		this.temperature = newTemp;
-	};
-	return this.temperature;
+  this.temperature = Math.max(newTemp, this.minTemperature);
 };
 
 Thermostat.prototype.powerSavingModeSwitch = function() {
@@ -33,9 +27,20 @@ Thermostat.prototype.powerSavingModeSwitch = function() {
     this.powerSavingMode = false;
   } else {
     this.powerSavingMode = true;
+    this.temperature = Math.min(this.temperature, this.maxOnPowerSave);
   };
 };
 
 Thermostat.prototype.tempReset = function() {
-  this.temperature = 20;
+  this.temperature = this.resetTo;
+};
+
+Thermostat.prototype.colorDisplay = function() {
+  if (this.temperature < this.greenTemperature) {
+    return "green";
+  } else if (this.temperature > this.redTemperature) {
+    return "red";
+  } else {
+    return "yellow";
+  };
 };
