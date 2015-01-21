@@ -84,8 +84,12 @@ describe("Thermostat", function() {
   });
 
   describe("changing defaults", function() {
-      thermostat.changeMinimumTemp(15);
-      expect(thermostat.minimumTemperature).toEqual(15);
+    
+    it("will allow to change default minimum temp", function() {
+      thermostat.changeMinTemp(15);
+      expect(thermostat.minTemperature).toEqual(15);
+    });
+    
   });
 
 });

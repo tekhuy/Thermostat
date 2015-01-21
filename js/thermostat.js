@@ -51,3 +51,7 @@ Thermostat.prototype.colorDisplay = function() {
 Thermostat.prototype.tempReset = function() {
   this.temperature = this.resetTo
 };
+
+Thermostat.prototype.changeMinTemp = function(temp) {
+  this.minTemperature = temp
+};
