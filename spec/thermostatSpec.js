@@ -35,7 +35,7 @@ describe("Thermostat", function() {
     });
 
     it("has a maximum temperature of 32degrees", function() {
-      thermostat.powerSavingModeSwitch();
+      thermostat.powerSavingModeOff();
       thermostat.increaseTemperature(14);
       expect(thermostat.temperature).toEqual(32);
     });
@@ -55,9 +55,9 @@ describe("Thermostat", function() {
     });
 
     it("will decrease the temp to 25 degrees if higher", function() {
-      thermostat.powerSavingModeSwitch();
+      thermostat.powerSavingModeOff();
       thermostat.temperature = 30;
-      thermostat.powerSavingModeSwitch();
+      thermostat.powerSavingModeOn();
       expect(thermostat.temperature).toEqual(25);
     });
 
@@ -68,36 +68,19 @@ describe("Thermostat", function() {
     it("should be green if less than 18 degrees", function() {
       thermostat.decreaseTemperature(3);
       expect(thermostat.temperature).toEqual(17);
-      expect(thermostat.colorDisplay()).toBe('green');
+      expect(thermostat.colorDisplay()).toBe('low-usage');
     });
 
     it("should be yellow if less than 25 degrees", function() {
-      expect(thermostat.colorDisplay()).toBe('yellow');
+      expect(thermostat.colorDisplay()).toBe('medium-usage');
     });
 
     it("should be red if 25 degrees or higher", function() {
       thermostat.increaseTemperature(5);
       expect(thermostat.temperature).toEqual(25);
-      expect(thermostat.colorDisplay()).toBe('red');
+      expect(thermostat.colorDisplay()).toBe('high-usage');
     });
 
   });
-
-  // describe("changing defaults", function() {
-    
-  //   it("will allow user to change default minimum temp", function() {
-  //     thermostat.changeDefaults("minTemperature", 15);
-  //     expect(thermostat.minTemperature).toEqual(15);
-  //   });
-
-  //   it("will allow user to change default maximum temp", function() {
-  //     thermostat.changeDefaults("maxTemperature", 40);
-  //     expect(thermostat.maxTemperature).toEqual(40);
-  //   });
-    
-  // });
-
-
-
 
 });

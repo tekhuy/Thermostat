@@ -7,8 +7,7 @@ var Thermostat = function() {
   this.maxOnPowerSave = 25;
   this.greenTemperature = 18;
   this.redTemperature = 24;
-  // this.minTemperature = defaultMin;
-  // this.maxTemperature = defaultMax;
+  this.changeUnit = 1;
 
   this.getDefaultMin = function() {
     return defaultMin;
@@ -21,6 +20,7 @@ var Thermostat = function() {
 };
 
 Thermostat.prototype.increaseTemperature = function(changeTempBy) {
+  changeTempBy  = changeTempBy || this.changeUnit;
   var newTemp = this.temperature += changeTempBy;
   if (this.powerSavingMode) {
     this.temperature = Math.min(newTemp, this.maxOnPowerSave);
@@ -30,18 +30,19 @@ Thermostat.prototype.increaseTemperature = function(changeTempBy) {
 };
 
 Thermostat.prototype.decreaseTemperature = function(changeTempBy) {
+  changeTempBy  = changeTempBy || this.changeUnit;
   var newTemp = this.temperature -= changeTempBy;
   this.temperature = Math.max(newTemp, this.getDefaultMin());
   return this.temperature;
 };
 
-Thermostat.prototype.powerSavingModeSwitch = function() {
-  if (this.powerSavingMode == true) {
-    this.powerSavingMode = false;
-  } else {
-    this.powerSavingMode = true;
-    this.temperature = Math.min(this.temperature, this.maxOnPowerSave);
-  };
+Thermostat.prototype.powerSavingModeOn = function () {
+  this.powerSavingMode;
+  this.temperature = Math.min(this.temperature, this.maxOnPowerSave);
+};
+
+Thermostat.prototype.powerSavingModeOff = function () {
+  this.powerSavingMode = false;
 };
 
 Thermostat.prototype.tempReset = function() {
@@ -50,25 +51,17 @@ Thermostat.prototype.tempReset = function() {
 
 Thermostat.prototype.colorDisplay = function() {
   if (this.temperature < this.greenTemperature) {
-    return "green";
+    return "low-usage";
   } else if (this.temperature > this.redTemperature) {
-    return "red";
+    return "high-usage";
   } else {
-    return "yellow";
+    return "medium-usage";
   };
 };
 
 Thermostat.prototype.tempReset = function() {
   this.temperature = this.resetTo
 };
-
-// Thermostat.prototype.changeMinTemp = function(temp) {
-//   this.minTemperature = temp
-// };
-
-// Thermostat.prototype.changeMaxTemp = function(temp) {
-//   this.maxTemperature = temp
-// };
 
 Thermostat.prototype.changeDefaults = function(defaultToChange, change) {
   this[defaultToChange] = change;
