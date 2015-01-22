@@ -43,6 +43,7 @@ h1.low-usage {
 
 .temp-control, .power-saving-mode {
 	text-align: right;
+	display: inline-block;
 }
 
 .images {
