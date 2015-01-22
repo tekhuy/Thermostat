@@ -1,3 +1,7 @@
+body {
+    background-color: #C6E2FF;
+}
+
 h1{
 	margin-top: 10%;
 	text-align: center;
@@ -29,7 +33,3 @@ h1.high-usage {
 h1.low-usage {
  color: #228b22;
 }
-
-
-
-
