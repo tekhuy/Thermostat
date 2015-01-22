@@ -1,6 +1,11 @@
 console.log("hello")
 var thermostat = new Thermostat();
 
+// var updateTemperature = function() {
+//   $('#temperature').text(thermostat.temperature);
+//   changeColor();
+// };
+
 var updateTemperature = function() {
   $('#temperature').text(thermostat.temperature);
   changeColor();
