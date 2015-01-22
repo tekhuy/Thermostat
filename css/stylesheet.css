@@ -1,32 +1,37 @@
 @import url('normalize.css');
 
-.grid {
+* {
+	-webkit-box-sizing: border-box;
+		 -moz-box-sizing: border-box;
+			    box-sizing: border-box;
+}
+body {
 	width: 100%;
 	height: 100%;
 }
 
-.display {
-	display: inline-block;
-	float: left;
-	width: 60%;
-	height: 100%;
-	text-align: right;
-	overflow: auto;;
+body:after {
+	content: "";
+	display: table;
+	clear: both;
+}
 
+.display, .images {
+	float: left;
+}
+
+.display {
+	width: 60%;
+	text-align: right;
 }
 
 .images {
 	color: white;
-	display: inline-block;
-	float: left;
 	background-color: black;
 	width: 40%;
-	height: 100%;
-	text-align: left;
-	overflow: auto;
 }
 
-h1{
+h1 {
 	margin-top: 10%;
 	text-align: right;
 	font-size: 5em;
@@ -45,6 +50,11 @@ h1.low-usage {
  color: #228b22;
 }
 
+a{
+	text-decoration: none;
+	color: black;
+}
+
 .temp-control {
 	text-align: right;
 	margin-bottom: 1%;
@@ -55,6 +65,12 @@ h1.low-usage {
 	width: 2%;
 	font-size: 1em;
 }
+
+.power-saving-mode span {
+	background-color: white;
+	padding: 2%;
+}
+
 
 
 
