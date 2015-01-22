@@ -1,19 +1,24 @@
 @import url('normalize.css');
 
-* {
+*,*:after, *:before {
 	-webkit-box-sizing: border-box;
 		 -moz-box-sizing: border-box;
 			    box-sizing: border-box;
 }
-body {
-	width: 100%;
-	height: 100%;
+
+html, body
+{
+    height: 100%;
 }
 
-body:after {
+.grid:after {
 	content: "";
 	display: table;
 	clear: both;
+}
+
+.grid {
+	height: 100%;
 }
 
 .display, .images {
@@ -22,6 +27,7 @@ body:after {
 
 .display {
 	width: 60%;
+	height: 100%;
 	text-align: right;
 }
 
@@ -29,6 +35,7 @@ body:after {
 	color: white;
 	background-color: black;
 	width: 40%;
+	height: 100%;
 }
 
 h1 {
@@ -53,6 +60,7 @@ h1.low-usage {
 a{
 	text-decoration: none;
 	color: black;
+	padding: 0.5em;
 }
 
 .temp-control {
@@ -68,7 +76,7 @@ a{
 
 .power-saving-mode span {
 	background-color: white;
-	padding: 2%;
+	text-align: right;
 }
 
 
